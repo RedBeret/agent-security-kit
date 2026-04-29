@@ -87,6 +87,7 @@ For most users, start with these:
 | `components/hermes/hermes-brain-backup` | Creates sanitized backups of agent state while excluding credentials and sessions. |
 | `components/hermes/hermes-commit-guard` | Injects commit policy and provides an optional commit-msg hook to block AI tell phrases. |
 | `components/hermes/hermes-hook-audit` | Writes redacted JSONL records for Hermes shell-hook activity without changing agent behavior. |
+| `components/hermes/hermes-context-scan` | Scans Hermes memory/context files for prompt-injection and context-poisoning phrases without printing private contents. |
 | `components/hermes/hermes-context-guard` | Adds context-handling rules for safer agent behavior. |
 | `components/hermes/hermes-self-review` | Injects a final review checklist before delivery. |
 | `components/hermes/hermes-hardened-skills` | Skill prompts for common software/security roles. |
