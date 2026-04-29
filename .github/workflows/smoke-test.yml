@@ -4,6 +4,13 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke-test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
@@ -11,9 +18,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y jq openssl
 
-      - name: Run smoke tests
-        run: bash scripts/smoke-test.sh
+      - name: Run publish checks
+        run: bash scripts/publish-check.sh
