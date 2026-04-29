@@ -64,4 +64,31 @@ fi
 grep -q 'SECRETS FOUND' /tmp/ask-scan.out
 ok "workspace scanner detects secret"
 
+good_mcp=$(mktemp)
+cat > "$good_mcp" <<'EOF'
+mcp_servers:
+  reviewed:
+    url: "https://mcp.example.com/mcp"
+    headers:
+      Authorization: "Bearer ${MCP_REVIEWED_API_KEY}"
+    tools:
+      include: ["search"]
+EOF
+MCP_GUARD_ALLOWED_HOSTS_CSV="mcp.example.com" bash components/hermes/hermes-mcp-guard/mcp-guard.sh "$good_mcp" >/tmp/ask-mcp-good.out
+
+bad_mcp=$(mktemp)
+cat > "$bad_mcp" <<'EOF'
+mcp_servers:
+  unsafe:
+    url: "http://mcp.example.com/mcp"
+    headers:
+      Authorization: "Bearer literal-token-value"
+EOF
+if bash components/hermes/hermes-mcp-guard/mcp-guard.sh "$bad_mcp" >/tmp/ask-mcp-bad.out 2>&1; then
+  echo "mcp guard missed unsafe config" >&2
+  exit 1
+fi
+grep -q 'Result: FAIL' /tmp/ask-mcp-bad.out
+ok "mcp guard"
+
 printf 'all smoke tests passed\n'
