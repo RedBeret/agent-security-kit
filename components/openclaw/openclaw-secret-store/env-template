@@ -1,0 +1,14 @@
+# ~/.openclaw/.env — NON-SECRET config only
+# API keys belong in your OS keystore. See README.md for setup.
+#
+# Keys to store in your keystore:
+#   ANTHROPIC_API_KEY
+#   OPENROUTER_API_KEY
+#   TAVILY_API_KEY
+#   OPENCLAW_GATEWAY_TOKEN
+
+TERMINAL_MODAL_IMAGE=nikolaik/python-nodejs:python3.11-nodejs20
+TERMINAL_TIMEOUT=60
+TERMINAL_LIFETIME_SECONDS=300
+BROWSER_SESSION_TIMEOUT=300
+BROWSER_INACTIVITY_TIMEOUT=120

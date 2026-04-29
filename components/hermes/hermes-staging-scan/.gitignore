@@ -1,0 +1,42 @@
+# ── Secrets — NEVER track ────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+!env-template
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+credentials/
+secrets/
+
+# ── OS / editor ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Logs / temp ──────────────────────────────────────────────────────
+*.log
+logs/
+tmp/
+*.tmp
+
+# ── Language artifacts ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+node_modules/
+package-lock.json
+
+# ── Backups / state ──────────────────────────────────────────────────
+*.bak
+*.orig
+*.rej
+state/

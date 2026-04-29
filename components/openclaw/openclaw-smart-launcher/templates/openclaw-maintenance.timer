@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenClaw weekly maintenance timer
+
+[Timer]
+# Weekly: Sunday at 4:00 AM
+OnCalendar=Sun *-*-* 04:00:00
+Persistent=true
+RandomizedDelaySec=600
+
+[Install]
+WantedBy=timers.target

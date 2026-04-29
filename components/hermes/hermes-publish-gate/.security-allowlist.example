@@ -1,0 +1,7 @@
+# Optional regex allowlist for publish-gate.
+# Lines are extended regular expressions matched against scanner output.
+# Keep this narrow: prefer file-specific patterns over broad token patterns.
+#
+# Examples:
+# ^./docs/security-examples\.md:
+# ^./tests/fixtures/fake-key\.txt:

@@ -1,0 +1,8 @@
+# Optional regex allowlist for scanner output.
+# Copy to .security-allowlist and keep entries narrow.
+#
+# Good: allow one fixture path used by tests.
+# ^./tests/fixtures/fake-anthropic-key\.txt:
+#
+# Avoid: broad token allowlists that would hide real leaks.
+# sk-ant-
