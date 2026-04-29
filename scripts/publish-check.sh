@@ -7,5 +7,6 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 bash scripts/smoke-test.sh
+bash scripts/test-components-isolated.sh
 bash components/hermes/hermes-publish-gate/publish-gate.sh .
 bash components/hermes/hermes-workspace-scanner/scan-workspace.sh .
