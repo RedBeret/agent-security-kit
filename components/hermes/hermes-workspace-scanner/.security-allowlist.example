@@ -1,0 +1,7 @@
+# Optional regex allowlist for scan-workspace.sh.
+# Lines are extended regular expressions matched against file paths reported by
+# the scanner. Keep entries narrow and review them before publishing.
+#
+# Examples:
+# /tests/fixtures/fake-key\.txt$
+# /docs/security-examples\.md$

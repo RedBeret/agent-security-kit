@@ -1,0 +1,7 @@
+# Optional regex allowlist for scan-workspace.sh and publish-gate.sh.
+# Lines are extended regular expressions matched against scanner output.
+# Keep entries narrow and review them before publishing.
+#
+# Examples:
+# ^./docs/security-examples\.md:
+# /tests/fixtures/fake-key\.txt$

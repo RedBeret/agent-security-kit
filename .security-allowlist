@@ -1,0 +1,6 @@
+# Intentional fake keys used by smoke tests.
+^./scripts/smoke-test\.sh:
+(^|/)scripts/smoke-test\.sh$
+
+# Commit attribution guard contains the phrases it is designed to block.
+(^|/)block-ai-attribution\.sh$

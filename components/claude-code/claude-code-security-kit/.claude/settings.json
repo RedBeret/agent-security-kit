@@ -1,0 +1,26 @@
+{
+  "deny": [
+    "Read(./.env)",
+    "Read(./secrets/**)",
+    "Read(./**/credentials/**)",
+    "Bash(env)",
+    "Bash(printenv)",
+    "Bash(export -p)",
+    "Bash(cat */.env*)",
+    "Bash(curl * | sh)",
+    "Bash(curl * | bash)",
+    "Bash(wget * | sh)",
+    "Bash(rm -rf /)",
+    "Bash(rm -rf ~)",
+    "Bash(chmod 777 *)",
+    "Bash(dd if=* of=/dev/*)"
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write",
+        "command": "bash .claude/hooks/block-secrets.sh"
+      }
+    ]
+  }
+}

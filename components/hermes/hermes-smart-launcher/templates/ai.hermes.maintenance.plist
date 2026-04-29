@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ai.hermes.maintenance</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>AGENT_HOME_PLACEHOLDER/smart-launcher.sh</string>
+    </array>
+
+    <!-- Weekly: Sunday at 4:00 AM -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key>
+        <integer>0</integer>
+        <key>Hour</key>
+        <integer>4</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>AGENT_HOME_PLACEHOLDER/logs/maintenance-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>AGENT_HOME_PLACEHOLDER/logs/maintenance-stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <!-- Don't run on load, only on schedule -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- Lower priority so it doesn't interfere with active work -->
+    <key>Nice</key>
+    <integer>10</integer>
+</dict>
+</plist>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Hermes Agent Smart Launcher — weekly maintenance
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash AGENT_HOME_PLACEHOLDER/smart-launcher.sh
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+Environment=HOME=HOME_PLACEHOLDER
+Nice=10
+StandardOutput=append:AGENT_HOME_PLACEHOLDER/logs/maintenance-stdout.log
+StandardError=append:AGENT_HOME_PLACEHOLDER/logs/maintenance-stderr.log
