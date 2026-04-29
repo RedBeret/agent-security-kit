@@ -9,6 +9,7 @@ own README and setup script.
 - Safe terminal: stops commands likely to destroy data or leak credentials.
 - Commit guard: reminds the agent of commit rules and can block AI-attribution
   commit messages with a `commit-msg` hook.
+- Hook audit: records redacted shell-hook activity for later review.
 
 ## Scanners and Gates
 
