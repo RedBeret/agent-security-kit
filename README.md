@@ -112,6 +112,7 @@ That runs:
 - shell syntax checks
 - core hook behavior checks
 - fake-secret detection checks
+- isolated component setup tests in a temporary fake home
 - publish gate checks
 - workspace scanner checks against this repository
 
