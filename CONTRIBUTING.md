@@ -27,3 +27,16 @@ file-specific, and justified by tests or documentation examples.
 
 Use concise, human-readable commit messages. Do not include AI attribution
 footers or generated-by text in commits.
+
+## Pull Request Policy
+
+All changes should go through pull requests. Do not push directly to `main`.
+
+Keep PRs small:
+
+- one feature, fix, or documentation update per PR
+- clear title and summary
+- publish-check output included when relevant
+- no unrelated cleanup mixed into the same branch
+
+This policy applies to agent-authored work as well as human-authored work.
