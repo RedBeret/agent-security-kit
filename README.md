@@ -80,6 +80,7 @@ For most users, start with these:
 | `components/hermes/hermes-safe-terminal` | Blocks dangerous terminal commands such as destructive deletes, disk wipes, env dumps, and curl-to-shell. |
 | `components/hermes/hermes-publish-gate` | Runs a 12-check public-release gate for secrets, PII, AI attribution, artifacts, licenses, and debug code. |
 | `components/hermes/hermes-workspace-scanner` | Scans an agent workspace for leaked secrets, suspicious files, tracked secret files, and hardcoded user paths. |
+| `components/hermes/hermes-mcp-guard` | Reviews Hermes MCP server config for unsafe endpoints, broad tool exposure, literal credentials, and unpinned stdio launchers. |
 | `components/hermes/hermes-staging-scan` | Moves inbound files through ClamAV-backed scanned/quarantine directories. |
 | `components/hermes/hermes-secret-store` | Loads secrets from OS keystores instead of plaintext `.env` files. |
 | `components/hermes/hermes-memory-encrypt` | Encrypts `MEMORY.md` and `USER.md` at rest with HMAC verification. |

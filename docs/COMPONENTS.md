@@ -14,6 +14,7 @@ own README and setup script.
 
 - Publish gate: release-readiness checks before making a repo public.
 - Workspace scanner: local security scan for agent workspaces.
+- MCP guard: offline review of Hermes MCP server configuration.
 - Staging scan: ClamAV-backed inbound-file scan and quarantine workflow.
 
 ## Secret and State Handling
@@ -42,6 +43,7 @@ own README and setup script.
 4. Commit guard
 5. Workspace scanner
 6. Publish gate
+7. MCP guard, if MCP servers are enabled
 
 Add memory encryption, staging scans, brain backups, and smart launchers only
 after the core protections are working.
