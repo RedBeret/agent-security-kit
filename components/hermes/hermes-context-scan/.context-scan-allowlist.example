@@ -1,0 +1,5 @@
+# Regular expressions matched against "path:line:reason" findings.
+# Keep entries narrow and file-specific.
+#
+# Example:
+# docs/fixtures/prompt-injection-examples.md:[0-9]+:prompt override

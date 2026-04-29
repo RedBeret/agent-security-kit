@@ -15,6 +15,7 @@ own README and setup script.
 
 - Publish gate: release-readiness checks before making a repo public.
 - Workspace scanner: local security scan for agent workspaces.
+- Context scan: private memory/context review for prompt-injection phrases.
 - MCP guard: offline review of Hermes MCP server configuration.
 - Staging scan: ClamAV-backed inbound-file scan and quarantine workflow.
 
