@@ -118,5 +118,19 @@ fi
 echo "$content" | grep -qE '^\s*(env|printenv|export\s+-p)\s*(\||>|$)' && \
   _block "Environment dump could expose all API keys. Access specific variables instead."
 
+# ── Network exfiltration patterns ─────────────────────────────────────
+
+echo "$content" | grep -qiE '(curl|wget).*(-d|--data|--data-binary|--form|-F|--upload-file|-T)[[:space:]]+@?([^[:space:]]*/)?(\.env|credentials|secrets?\.json|\.netrc|id_rsa|id_ed25519|[^[:space:]]+\.(pem|key))' && \
+  _block "Network upload of a credential-like file detected. Review data flow before sending."
+
+echo "$content" | grep -qiE '(env|printenv|export[[:space:]]+-p|cat[[:space:]]+([^[:space:]]*/)?(\.env|credentials|secrets?\.json|\.netrc))[[:space:]]*\|[[:space:]]*(curl|wget|nc|ncat|socat)' && \
+  _block "Credential or environment output piped to a network client."
+
+echo "$content" | grep -qiE 'https?://[^[:space:]"'\''<>]+[?&](token|api[_-]?key|key|secret|password)=' && \
+  _block "Secret-like query parameter in URL. Use headers or keystore-backed auth."
+
+echo "$content" | grep -qiE 'Authorization:[[:space:]]*Bearer[[:space:]]+[^[:space:]"'\''$][^[:space:]"'\'']{8,}' && \
+  _block "Literal bearer token detected. Use environment interpolation or OS keystore."
+
 # All clear
 printf '{}\n'
