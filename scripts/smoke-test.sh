@@ -91,4 +91,17 @@ fi
 grep -q 'Result: FAIL' /tmp/ask-mcp-bad.out
 ok "mcp guard"
 
+audit_dir=$(mktemp -d)
+audit_log="$audit_dir/hook-audit.jsonl"
+audit_payload="{\"hook_event_name\":\"pre_tool_call\",\"tool_name\":\"terminal\",\"session_id\":\"s1\",\"cwd\":\"$audit_dir\",\"tool_input\":{\"command\":\"curl -H 'Authorization: Bearer ${fake_key}' https://example.com\"}}"
+out=$(printf '%s\n' "$audit_payload" | HERMES_HOOK_AUDIT_LOG="$audit_log" bash components/hermes/hermes-hook-audit/audit-hook.sh)
+[ "$out" = '{}' ]
+[ -s "$audit_log" ]
+if grep -q "$fake_key" "$audit_log"; then
+  echo "hook audit log leaked fake key" >&2
+  exit 1
+fi
+grep -q '\[REDACTED\]' "$audit_log"
+ok "hook audit"
+
 printf 'all smoke tests passed\n'
